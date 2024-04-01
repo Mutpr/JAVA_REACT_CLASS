@@ -1,0 +1,14 @@
+package week1_0328;
+
+import java.util.Scanner;
+
+public class VendingSimulator {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("=====자판기 시뮬레이터=====");
+		
+
+	}
+
+}

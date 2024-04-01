@@ -1,0 +1,27 @@
+import java.lang.*;
+public class Exam01 {
+	public static void main(String [] args) {
+		Example_Class ex = new Example_Class();
+		String arg = ex.example1();
+		String a = exampleMethod();
+		System.out.println(a);
+		System.out.println(arg);
+		System.out.println("Hello world");
+		System.out.println("1245445455");
+		System.out.println("a");
+		System.out.println('a');
+		System.out.println(3.14);
+		System.out.println("==================");
+		System.out.println("     /)/)");
+		System.out.println("    ( ..)");
+		System.out.println("    (  >ㅁ");
+		System.out.println(" Have a good time.");
+		System.out.println("==================");
+	}
+	
+	static String exampleMethod() {
+		String a1 = "안녕하세요";
+		return a1;
+	}
+
+}

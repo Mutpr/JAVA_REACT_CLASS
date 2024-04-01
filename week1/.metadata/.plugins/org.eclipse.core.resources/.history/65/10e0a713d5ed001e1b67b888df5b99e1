@@ -1,0 +1,47 @@
+package week1_0329;
+
+import java.util.Scanner;
+
+public class BaskinRobinsGame {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int randomNumber = (int)Math.random()*3;
+		int countNumber = 0;
+			System.out.println("======배스킨라빈스 게임을 시작합니다.======");
+		while(true) {
+			System.out.print("자신이 입력할 갯수를 입력하세요.>>");
+			String selectCount = sc.nextLine();
+			try {
+				int count = Integer.parseInt(selectCount);
+				switch(count) {
+				case 1:
+					System.out.print(count+"\n");
+					countNumber ++;
+					
+				case 2:
+					for(int i=1; i<=2; i++) {
+						countNumber ++;
+						System.out.print(countNumber+"\n");
+						
+					}
+				case 3:
+					for(int i=1; i<=3; i++) {
+						countNumber ++;
+						System.out.print(countNumber+"\n");
+					}
+				}
+			}catch(Exception e) {
+				
+			}
+		}
+	}
+	
+	public int randomNumber(int countNumber, int randomNumber) {
+		randomNumber = (int)Math.random()*3+1;
+		for(int i=1; i<=randomNumber; i++) {
+			countNumber ++;
+		}
+	}
+
+}

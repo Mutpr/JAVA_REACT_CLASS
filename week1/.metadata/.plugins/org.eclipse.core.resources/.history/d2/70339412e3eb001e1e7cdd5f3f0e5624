@@ -1,0 +1,11 @@
+package week1_0327;
+
+import java.io.IOException;
+
+public class Exam2 {
+	public static void main(String [] args) throws IOException{
+		System.in.read();
+	}
+
+
+}

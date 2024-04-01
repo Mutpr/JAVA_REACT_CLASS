@@ -1,0 +1,10 @@
+package week1_0328;
+
+public class quiz5 {
+	//구구구구구단
+	public static void main(String [] args) {
+		for(int i = 5; i<0; i--) {
+			System.out.print("*");
+		}
+	}
+}

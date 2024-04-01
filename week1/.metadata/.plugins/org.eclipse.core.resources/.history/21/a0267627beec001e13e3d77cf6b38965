@@ -1,0 +1,21 @@
+package week1_0328;
+
+public class star {
+	public static void main(String [] args) {
+		for(int i=5;i>0; i--) {
+			for(int j=0; j<i; j++) {
+				System.out.print("*");
+			}
+		for(int k=0; k>5; k++) {
+			for(int l=5; l<k; l--) {
+				System.out.print("-");
+				for(int s=0; s>l; s++) {
+					System.out.print("&");
+				}
+		}
+
+		}System.out.println();
+		}
+}
+}
+

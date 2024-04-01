@@ -1,0 +1,72 @@
+package week1_0328;
+
+import java.util.Scanner;
+
+public class VendingSimulator {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int money = 3000;
+        int cokePrice = 1200;
+        int cokeCount = 0;
+        int ciderPrice = 800;
+        int ciderCount = 0;
+        int plumPrice = 1500;
+        int plumCount = 0;
+
+        while (true) {
+            System.out.println("===== 자판기 시뮬레이터 =====");
+            System.out.println("1. 콜라(1200)  2. 사이다(800)  3. 매실차(1500)  0. 종료 및 잔액 확인");
+            System.out.print(">> ");
+            String userInput = scanner.nextLine();
+
+            try {
+                int choice = Integer.parseInt(userInput);
+                switch (choice) {
+                    case 1:
+                        if (money >= cokePrice) {
+                            money -= cokePrice;
+                            cokeCount++;
+                            System.out.println("콜라 구매 완료!");
+                        } else {
+                            System.out.println("잔액이 부족합니다. 돈을 더 넣거나 다른 음료를 선택하세요.");
+                        }
+                        break;
+                    case 2:
+                        if (money >= ciderPrice) {
+                            money -= ciderPrice;
+                            ciderCount++;
+                            System.out.println("사이다 구매 완료!");
+                        } else {
+                            System.out.println("잔액이 부족합니다. 돈을 더 넣거나 다른 음료를 선택하세요.");
+                        }
+                        break;
+                    case 3:
+                        if (money >= plumPrice) {
+                            money -= plumPrice;
+                            plumCount++;
+                            System.out.println("매실차 구매 완료!");
+                        } else {
+                            System.out.println("잔액이 부족합니다. 돈을 더 넣거나 다른 음료를 선택하세요.");
+                        }
+                        break;
+                    case 0:
+                        displayRemainingBalance(money, cokeCount, ciderCount, plumCount);
+                        return; // Exit the program
+                    default:
+                        System.out.println("잘못된 입력입니다.");
+                        break;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("잘못된 입력입니다.");
+            }
+        }
+    }
+
+    private static void displayRemainingBalance(int money, int cokeCount, int ciderCount, int plumCount) {
+        System.out.println("잔액: " + money);
+        System.out.println("콜라 갯수: " + cokeCount);
+        System.out.println("사이다 갯수: " + ciderCount);
+        System.out.println("매실차 갯수: " + plumCount);
+    }
+}

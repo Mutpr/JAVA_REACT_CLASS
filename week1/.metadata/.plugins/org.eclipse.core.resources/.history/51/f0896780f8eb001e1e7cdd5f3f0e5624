@@ -1,0 +1,25 @@
+package week1_0327;
+
+import java.util.Scanner;
+
+public class Exam3_02 {
+	public static void main(String[] args) {
+		System.out.println("");
+		Scanner sc = new Scanner(System.in);
+		String str = sc.nextLine();
+		try {
+			char a = str.charAt(0);
+			if(a=='a') {
+				
+			}else if(a=='b') {
+				
+			}else if(a=='c') {
+				
+			}else if(a=='d') {
+				
+			}
+		}catch(Exception e) {
+			System.out.println("잘못된 입력입니다.");
+		}
+	}
+}

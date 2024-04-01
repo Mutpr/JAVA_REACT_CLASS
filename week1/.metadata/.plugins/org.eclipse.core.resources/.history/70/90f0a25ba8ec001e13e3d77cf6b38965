@@ -1,0 +1,21 @@
+package week1_0328;
+
+import java.util.Scanner;
+
+public class quiz5 {
+	//구구구구구단
+	public static void main(String [] args) {
+		Scanner sc = new Scanner(System.in);
+		int i = 1;
+		int row = sc.nextInt();
+		if(row<0 || row>10) {
+			System.out.println("잘못된 입력입니다.");
+		} else if(row>=1 && row<=9) {
+			System.out.println("잘못된 입력입니다.");
+			while(i<10) {
+				i += 1;
+				System.out.println(row + " * "+i+" = "+(row*i));
+			}
+		}
+	}
+}
