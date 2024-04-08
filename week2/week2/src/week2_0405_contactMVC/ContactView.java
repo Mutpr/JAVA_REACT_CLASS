@@ -10,7 +10,8 @@ public class ContactView {
 				"1. 신규 연락처 등록"+"\n"
 				+"2. 연락처 목록 출력"+"\n"
 				+"3. 연락처 검색"+"\n"
-				+"4. 연락처 삭제"+"\n"
+				+"4. 연락처 수정"+"\n"
+				+"5. 연락처 삭제"+"\n"
 				+"0. 종료";
 		return menu;
 	}public String searchMenuPrint() {

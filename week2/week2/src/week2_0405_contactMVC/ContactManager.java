@@ -35,7 +35,7 @@ public class ContactManager {
 		return contactList;
 	}
 
-	public Contact[] deleteContactListAsArray(int index) {
+	public Contact[] deleteContactListAsArray(int index, id) {
 		Contact[] contactList = getContactList();
 		Contact[] newContactList1 = Arrays.copyOfRange(contactList, 0, index);
 		Contact[] newContactList2 = Arrays.copyOfRange(contactList, index, contactList.length);
@@ -50,5 +50,9 @@ public class ContactManager {
 
 	public int returnIndex() {
 		return index;
+	}
+	
+	public void updateContactList(Contact contact) {
+		this.contactList[index] = contact;
 	}
 }

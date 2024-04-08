@@ -88,15 +88,19 @@ public class Quiz03_Main {
 						}
 					}
 				} else if (menu == 4) {
-					Contact[] contactList = manager.getContactList();
-					System.out.println(view.searchMenuPrint());
-
-					String search = sc.nextLine();
-					for (int i = 0; i < index; i++) {
-						if (contactList[i].getName().equals(search)) {
-							System.out.println(contactList[i]);
-						} else if (contactList[i].getPhone().equals(search)) {
-							System.out.println(contactList[i]);
+					System.out.println("새로운 이름을 입력해주세요.");
+					String updatedUser = sc.nextLine();
+					System.out.println("새로운 번호를 입력해주세요.");
+					String updatedNumber = sc.nextLine();
+					manager.updateContactList(new Contact(index, updatedUser, updatedNumber));
+				} else if (menu == 5) {
+					Contact [] contactList = manager.getContactList();
+					System.out.println("삭제할 번호 또는 이름을 입력하세요");
+					String deletedInfo = sc.nextLine();
+					for(int i=0; i<index+1; i++) {
+						if(contactList[i].getName().equals(deletedInfo) || contactList[i].getPhone().equals(deletedInfo)) {
+							manager.deleteContactListAsArray(index);
+							System.out.println("삭제되었습니다.");
 						}
 					}
 				} else if (menu == 0) {
