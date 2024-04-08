@@ -35,7 +35,7 @@ public class ContactManager {
 		return contactList;
 	}
 
-	public Contact[] deleteContactListAsArray(int index, id) {
+	public Contact[] deleteContactListAsArray(int index) {
 		Contact[] contactList = getContactList();
 		Contact[] newContactList1 = Arrays.copyOfRange(contactList, 0, index);
 		Contact[] newContactList2 = Arrays.copyOfRange(contactList, index, contactList.length);
