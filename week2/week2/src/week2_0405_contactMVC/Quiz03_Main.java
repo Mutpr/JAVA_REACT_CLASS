@@ -14,12 +14,13 @@ public class Quiz03_Main {
 		String[] userNumberList = new String[100];
 
 		String[] numberVerification = new String[3];
-		while (true) {
+		menu: while (true) {
 			System.out.print(view.menuPrint());
 			String menuSelect = sc.nextLine();
 			try {
 				int menu = Integer.parseInt(menuSelect);
 				int index = manager.returnIndex();
+				Contact[] contactList;
 				if (menu == 1) {
 					System.out.println(index);
 					insertion: while (true) {
@@ -29,11 +30,13 @@ public class Quiz03_Main {
 						System.out.println("번호를 입력해주세요.");
 						String number = sc.nextLine();
 						userNumberList[index] = number;
-						
-						if(duplicationValid(userNameList, userNumberList, index) == true || contactNumberValid(number, numberVerification) == true) {
+
+						if (duplicationValid(userNameList, userNumberList, index) == true
+								|| contactNumberValid(number, numberVerification) == true) {
 							System.out.println("잘못된 입력입니다.");
-						}else if(duplicationValid(userNameList, userNumberList, index) != true && contactNumberValid(number, numberVerification) != true){
-							manager.addContactList(new Contact(index,user, number));
+						} else if (duplicationValid(userNameList, userNumberList, index) != true
+								&& contactNumberValid(number, numberVerification) != true) {
+							manager.addContactList(new Contact(index, user, number));
 						}
 						System.out.println("입력을 계속하시려면 1번을, 종료하려면 0번을 눌러주세요.");
 						String overSignal = sc.nextLine();
@@ -51,43 +54,78 @@ public class Quiz03_Main {
 
 					}
 				} else if (menu == 2) {
-					Contact[] contactList = manager.getContactList();
+					contactList = manager.getContactList();
 					for (int i = 0; i < index; i++) {
-						System.out.println(contactList[i].getId());
-						System.out.println(contactList[i].getName());
-						System.out.println(contactList[i].getPhone());
+						if (contactList[i] != null) {
+							System.out.println(contactList[i].getId());
+							System.out.println(contactList[i].getName());
+							System.out.println(contactList[i].getPhone());
+						}
 					}
-
 				} else if (menu == 3) {
-					Contact[] contactList = manager.getContactList();
+					contactList = manager.getContactList();
 					System.out.println(view.searchMenuPrint());
 
 					String search = sc.nextLine();
 					for (int i = 0; i < index; i++) {
-						if (contactList[i].getName().equals(search)) {
-							System.out.println(contactList[i]);
-						} else if (contactList[i].getPhone().equals(search)) {
-							System.out.println(contactList[i]);
+						if (contactList[i] != null) { // 요소가 null이 아닌 경우에만 처리
+							if (contactList[i].getName().equals(search)) {
+								System.out.println(contactList[i].getName());
+								System.out.println(contactList[i].getPhone());
+							} else if (contactList[i].getPhone().equals(search)) {
+								System.out.println(contactList[i].getName());
+								System.out.println(contactList[i].getPhone());
+							}
 						}
 					}
 				} else if (menu == 4) {
-					System.out.println("새로운 이름을 입력해주세요.");
-					String updatedUser = sc.nextLine();
-					System.out.println("새로운 번호를 입력해주세요.");
-					String updatedNumber = sc.nextLine();
-					manager.updateContactList(new Contact(index, updatedUser, updatedNumber));
+					System.out.println("수정하려는 주소록의 이름 또는 번호를 입력해주세요.");
+					contactList = manager.getContactList();
+
+					String search = sc.nextLine();
+					for (int i = 0; i < index; i++) {
+						if (contactList[i].getName().equals(search)) {
+							System.out.println("새로운 이름을 입력해주세요.");
+							String updatedName = sc.nextLine();
+							System.out.println("새로운 번호를 입력해주세요.");
+							String updatedContact = sc.nextLine();
+							contactList[i] = manager.updateContactList(index, updatedName, updatedContact);
+							System.out.println(manager.getContactListAsIndex(index).getName());
+						} else if (contactList[i].getPhone().equals(search)) {
+							System.out.println("새로운 이름을 입력해주세요.");
+							String updatedName = sc.nextLine();
+							System.out.println("새로운 번호를 입력해주세요.");
+							String updatedContact = sc.nextLine();
+							contactList[i] = manager.updateContactList(index, updatedName, updatedContact);
+							System.out.println(manager.getContactListAsIndex(index).getName());
+						}
+					}
+
 				}
 
 				else if (menu == 5) {
-					Contact[] contactList = manager.getContactList();
+					contactList = manager.getContactList();
 					System.out.println("삭제할 번호 또는 이름을 입력하세요");
 					String deletedInfo = sc.nextLine();
+					boolean deleted = false; // 삭제 여부를 확인하기 위한 변수
 					for (int i = 0; i < index + 1; i++) {
-						if (contactList[i].getName().equals(deletedInfo)
-								|| contactList[i].getPhone().equals(deletedInfo)) {
-							manager.deleteContactListAsArray(index);
-							System.out.println("삭제되었습니다.");
+						if (contactList[i] != null && (contactList[i].getName().equals(deletedInfo)
+								|| contactList[i].getPhone().equals(deletedInfo))) {
+							// 삭제할 요소를 찾았을 때
+							// 삭제되는 요소를 null로 처리
+							contactList[i] = null;
+							// 삭제됨을 표시
+							deleted = true;
+							// 인덱스 감소
+							index--;
+							// 반복문 종료
+							break;
 						}
+					}
+					if (deleted) {
+						System.out.println("삭제되었습니다.");
+					} else {
+						System.out.println("삭제할 요소를 찾을 수 없습니다.");
 					}
 				} else if (menu == 0) {
 					System.out.println("시스템을 종료합니다.");
