@@ -14,7 +14,7 @@ public class Quiz03_Main {
 		String[] userNumberList = new String[100];
 
 		String[] numberVerification = new String[3];
-		menu: while (true) {
+		while (true) {
 			System.out.print(view.menuPrint());
 			String menuSelect = sc.nextLine();
 			try {
