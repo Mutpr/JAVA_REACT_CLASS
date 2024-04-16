@@ -39,11 +39,12 @@ public class MelonManager {
 	}
 
 	public void deleteMusicInfo(int id) {
-		
 		for (int i = 0; i < musicList.size(); i++) {
 			if (musicList.get(i).getId() == id) {
 				musicList.remove(i);
-				return;
+				return; //지울때 기준점이 아이디라서 브레이크로 나가주는게 좋음
+				//remove에서 object를 넣어도 됨!(ex) musicList.remove(dto)
+				//boolean을 리턴함
 			} else {
 				System.out.println("찾으시는 음악이 없습니다. 다시 확인해주세요.");
 			}
