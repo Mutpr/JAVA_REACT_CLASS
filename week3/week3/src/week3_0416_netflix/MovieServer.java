@@ -20,15 +20,15 @@ public class MovieServer {
 		DataInputStream dis = new DataInputStream(socket.getInputStream());
 		DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
 		System.out.println(socket.getInetAddress() + "/로부터 접속");
+		
+		int id = manager.indexReturn();
 		while (true) {
 
 			int msg = dis.readInt();
 			System.out.println(msg);
-
 			if (msg == 1) {
 				dos.writeUTF("** 영화 입력 시스템 **");
 				insertion: while (true) {
-					int id = 1;
 					dos.writeUTF("제목을 입력합니다.");
 					dos.flush();
 					String title = dis.readUTF();
@@ -38,11 +38,11 @@ public class MovieServer {
 					dos.flush();
 					String genre = dis.readUTF();
 					System.out.println(genre);
-
+					
 					Date date = new Date();
 					SimpleDateFormat formatter = new SimpleDateFormat("yyyy년 MM월 dd일 HH시 mm분 ss초");
 					String time = formatter.format(date);
-					manager.addMovies(new MovieDTO(id++, title, genre, time));
+					manager.addMovies(title, id, genre, time);
 
 					dos.writeUTF("입력을 계속하시려면 1을, 아니라면 0을 입력해주세요.");
 					int overmsg = dis.readInt();

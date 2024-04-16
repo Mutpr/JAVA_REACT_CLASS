@@ -2,8 +2,6 @@ package week3_0416_netflix;
 
 import java.util.ArrayList;
 
-import week3.Student;
-
 public class MovieDAO {
 	private int index = 0;
 	private ArrayList<MovieDTO> movieList = new ArrayList<MovieDTO>();
@@ -12,9 +10,11 @@ public class MovieDAO {
 		return movieList;
 	}
 
-	public void addMovies(MovieDTO movie) {
-		movie.setId(index);
-		movieList.add(index++, movie);
+	public void addMovies(String title, int id, String genre, String date) {
+		MovieDTO movie = new MovieDTO(id, title, genre, date);
+		//id = index
+		//아무거나..
+		movieList.add(movie);
 	}
 
 	public ArrayList<MovieDTO> deleteMovies(int id) {
