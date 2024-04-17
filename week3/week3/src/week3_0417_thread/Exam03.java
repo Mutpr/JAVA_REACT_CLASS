@@ -25,7 +25,6 @@ public class Exam03 {
 
 	public static void main(String[] args) {
 		
-		new CountDown().start();
 		String[] sentences = new String[] { "public static void main(String [] args)"
 				, "Scanner sc = new Scanner(System.in)", "DataInputStream dis = new DataInputStream()"
 		};
