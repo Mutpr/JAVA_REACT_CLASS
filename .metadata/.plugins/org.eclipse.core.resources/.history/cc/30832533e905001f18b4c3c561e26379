@@ -1,0 +1,18 @@
+package week5_0429_Cafe;
+
+import java.sql.SQLException;
+import java.util.List;
+
+public class CafeMain {
+
+	public static void main(String[] args) throws SQLException {
+		CafeDAO dao = new CafeDAO();
+		List<CafeDTO> list = dao.selectAll();
+		for(CafeDTO menu : list) {
+			System.out.println(menu.getId());
+			System.out.println(menu.getMenu());
+			System.out.println(menu.getPrice());
+		}
+	}
+
+}

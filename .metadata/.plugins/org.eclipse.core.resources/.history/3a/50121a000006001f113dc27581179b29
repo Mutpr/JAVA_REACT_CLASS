@@ -1,0 +1,14 @@
+package JDBC_02_Contact;
+
+import java.util.Scanner;
+
+public class ContactMain {
+	public static void main(String []args) {
+		ContactDAO manager = new ContactDAO();
+		Scanner sc = new Scanner(System.in);
+		
+		menu: while(true) {
+			System.out.print("1. 신규 등록 2. 목록 출력 3. 항목 삭제(id로 삭제)4. 항목 수정(id로 삭제) 5. 항목 검색(이름으로 검색)");
+		}
+	}
+}

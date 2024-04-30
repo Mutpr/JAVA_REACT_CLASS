@@ -1,0 +1,21 @@
+package week5_0430_Client;
+
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+public class Server {
+
+	public static void main(String[] args) {
+		try {
+			ServerSocket server = new ServerSocket(26000);
+			Socket socket = server.accept();
+			System.out.println(socket.getInetAddress()+"로부터 접속");
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+}

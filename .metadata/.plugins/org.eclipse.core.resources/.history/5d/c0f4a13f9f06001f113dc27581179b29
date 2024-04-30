@@ -1,0 +1,54 @@
+package week5_0430_Client;
+
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class Server {
+
+	String url = "jdbc:oracle:thin:@localhost:1521:xe";
+	String id = "KH";
+	String pw = "KH";
+
+	public static void main(String[] args) {
+		try {
+			ServerSocket server = new ServerSocket(26000);
+			Socket socket = server.accept();
+			System.out.println(socket.getInetAddress()+" 로부터 접속");
+			
+			Connection con = 
+			
+			InputStream inputStream = socket.getInputStream();
+			DataInputStream dis = new DataInputStream(inputStream);
+			OutputStream outputStream = socket.getOutputStream();
+			DataOutputStream dos = new DataOutputStream(outputStream);
+			menu:while(true) {
+				int menuSelect = dis.readInt();
+				//로그인
+				if(menuSelect == 1) {
+					String id = dis.readUTF();
+					String pw = dis.readUTF();
+					try (Connection con = this.getConnection(); Statement stmt = con.createStatement();) {
+				//회원가입
+				}else if(menuSelect == 2) {
+					
+				}
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	public Connection getConnection() throws SQLException {
+		Connection con = DriverManager.getConnection(url, id, pw);
+		return con;
+	}
+}

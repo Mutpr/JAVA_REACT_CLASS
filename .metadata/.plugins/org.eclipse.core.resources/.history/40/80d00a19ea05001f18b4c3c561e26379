@@ -1,0 +1,36 @@
+package week5_0429_Cafe;
+
+import java.sql.SQLException;
+import java.util.Scanner;
+
+public class CafeMain {
+
+	public static void main(String[] args) throws SQLException {
+		Scanner sc = new Scanner(System.in);
+		CafeDAO manager = new CafeDAO();
+		while(true) {
+			System.out.println("1. 입력 2. 수정 3. 삭제 4. 출력");
+			int menuSelect = Integer.parseInt(sc.nextLine());
+			//입력
+			if(menuSelect == 1) {
+				while(true) {
+					String menu = sc.nextLine();
+					int price = Integer.parseInt(sc.nextLine());
+					manager.insertMenu(menu, price);
+					
+				}
+			//업데이트
+			}else if(menuSelect ==2){
+			
+			//삭제
+			}else if(menuSelect == 3) {
+
+			//출력
+			}else if(menuSelect == 4) {
+				
+			}
+			
+		}
+	}
+
+}

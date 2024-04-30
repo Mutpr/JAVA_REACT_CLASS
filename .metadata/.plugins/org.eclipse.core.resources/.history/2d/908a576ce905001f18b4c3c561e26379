@@ -1,0 +1,30 @@
+package week5_0429_Cafe;
+
+import java.sql.SQLException;
+import java.util.Scanner;
+
+public class CafeMain {
+
+	public static void main(String[] args) throws SQLException {
+		Scanner sc = new Scanner(System.in);
+		
+		while(true) {
+			int menuSelect = Integer.parseInt(sc.nextLine());
+			//입력
+			if(menuSelect == 1) {
+			
+			//업데이트
+			}else if(menuSelect ==2){
+			
+			//삭제
+			}else if(menuSelect == 3) {
+
+			//출력
+			}else if(menuSelect == 4) {
+				
+			}
+			
+		}
+	}
+
+}

@@ -1,0 +1,15 @@
+package week5_0429_Cafe;
+
+import java.sql.Connection;
+
+public class CafeMain {
+
+	public static void main(String[] args) {
+		Connection conn = null;
+		// TODO Auto-generated method stub
+		String url = "jdbc:oracle:thin:@localhost:1521:xe";
+		String id = "KH";
+		String pw = "KH";
+	}
+
+}

@@ -1,0 +1,28 @@
+package JDBC_02_Contact;
+
+import java.sql.Connection;
+
+public class ContactDAO {
+	
+	private String url = "jdbc:oracle:thin:@localhost:1521:xe";
+	private String id = "KH";
+	private String pw = "KH";
+	public Connection getConnection() {
+		
+	}
+	//신규등록
+	public void insertContact(String name, String number) {
+		
+	}
+	
+	public boolean contactCheck(String number) {
+		String [] numberArray = number.split("-");
+		if(!numberArray[0].equals("010") || numberArray[1].length()!=4 || numberArray[2].length()!=4) {
+			
+		}else if 
+	}
+	//목록출력
+	//항목 삭제
+	//항목 수정
+	//항목 검색
+}

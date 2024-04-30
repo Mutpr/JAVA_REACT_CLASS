@@ -1,0 +1,8 @@
+package JDBC_02_Contact;
+
+public class ContactMain {
+	public static void main(String []args) {
+		ContactDAO manager = new ContactDAO();
+		
+	}
+}

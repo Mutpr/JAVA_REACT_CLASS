@@ -1,0 +1,12 @@
+package JDBC_02_Contact;
+
+public class ContactMain {
+	public static void main(String []args) {
+		ContactDAO manager = new ContactDAO();
+		try {
+			manager.insertContact("홍혜링", "010-1234-1235");
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+}

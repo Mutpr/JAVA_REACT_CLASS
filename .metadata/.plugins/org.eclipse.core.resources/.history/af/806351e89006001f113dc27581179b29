@@ -1,0 +1,19 @@
+package week5_0430_Client;
+
+import java.io.IOException;
+import java.net.ServerSocket;
+
+public class Server {
+
+	public static void main(String[] args) {
+		try {
+			ServerSocket server = new ServerSocket(26000);
+			Socket socket = server.accept();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+}

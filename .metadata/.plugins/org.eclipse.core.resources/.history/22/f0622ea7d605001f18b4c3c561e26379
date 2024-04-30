@@ -1,0 +1,42 @@
+package week5_0429_Cafe;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class CafeDAO {
+	ArrayList<HashMap<Integer, String>> manyMenuList = new ArrayList<HashMap<Integer, String>>();
+	ArrayList<Integer> oneMenuList = new ArrayList<Integer>();
+	
+	String url = "jdbc:oracle:thin:@localhost:1521:xe";
+	String id = "KH";
+	String pw = "KH";
+
+	//여러개 한번에 입력
+	
+	public ArrayList<HashMap<String, Integer>> insert(int price, String menu){
+		String sql = "insert into cafe_menu values (cafe_menu_seq.NEXTVAL,+"+menu+","+price+")";
+		Connection con = DriverManager.getConnection(url, id, pw);
+		Statement stmt = con.createStatement();
+		HashMap<Integer, String> map = new HashMap<Integer, String>();
+		for(int i=0; i<manyMenuList.size(); i++) {
+			map.put(price, menu);
+			manyMenuList.add(map);
+		}
+		for(int i=0; i<manyMenuList.size(); i++) {
+			HashMap<Integer, String> mapInsideList = manyMenuList.get(i);
+			mapInsideList.get(menu);
+		}
+	}
+	
+	//삭제
+	public void
+	
+	//수정 
+	
+	
+	//검색
+}

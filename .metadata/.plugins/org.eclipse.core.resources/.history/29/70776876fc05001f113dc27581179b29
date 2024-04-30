@@ -1,0 +1,9 @@
+package JDBC_02_Contact;
+
+public class ContactDAO {
+	//신규등록
+	//목록출력
+	//항목 삭제
+	//항목 수정
+	//항목 검색
+}

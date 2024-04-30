@@ -1,0 +1,42 @@
+package week5_0429_Cafe;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+public class CafeDAO {
+	List<CafeDTO> manyMenuList = new ArrayList<CafeDTO>();
+
+	String url = "jdbc:oracle:thin:@localhost:1521:xe";
+	String id = "KH";
+	String pw = "KH";
+
+	//여러개 한번에 입력
+	
+	public List<CafeDTO> insert(int price, String menu) throws SQLException{
+		Connection con = DriverManager.getConnection(url, id, pw);
+		Statement stmt = con.createStatement();
+
+		while(true) {
+			String sequenceSelect = "select cafe_menu_seq.currval from dual";
+			ResultSet rs = stmt.executeQuery(sequenceSelect);
+			int id = rs.getInt(1);
+			CafeDTO cafeMenu = new CafeDTO(id, menu, price);
+			
+			manyMenuList.add(cafeMenu);
+			
+			String insertSql = "select cafe_menu_seq.currval from dual";
+		}
+	}
+	
+	//삭제
+	
+	//수정 
+	
+	
+	//검색
+}

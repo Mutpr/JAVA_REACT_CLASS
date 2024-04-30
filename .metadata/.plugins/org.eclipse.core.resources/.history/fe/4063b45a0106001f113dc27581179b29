@@ -1,0 +1,58 @@
+package JDBC_02_Contact;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class ContactDAO {
+	String url = "jdbc:oracle:thin:@localhost:1521:xe";
+	String id = "KH";
+	String pw = "KH";
+	
+	public Connection getConnection() throws SQLException {
+		Connection con = DriverManager.getConnection(url, id, pw);
+		return con;
+	}
+	//신규등록
+	public void insertContact(String name, String phone) throws SQLException {
+		try (Connection con = this.getConnection(); Statement stmt = con.createStatement();){
+			
+			if(contactCheck(phone) == true) {
+				
+					//중복값 검사
+					String duplicationSQL = "select * from contact where name ='"+name+"'";
+					ResultSet duplication = stmt.executeQuery(duplicationSQL);
+					if(duplication.next()) {
+						
+					}else {
+						String sql = "insert into contact values (contact_seq.nextval,'"+name+"','"+phone+"')";
+						int rs = stmt.executeUpdate(sql);
+						if(rs>0) {
+						}else {
+						}
+						System.out.println();
+					}
+				}else {
+					System.out.println("입력 실패");
+				}
+			}
+			
+		}
+
+	}
+	
+	public boolean contactCheck(String phone) {
+		String [] numberArray = phone.split("-");
+		if(!numberArray[0].equals("010") || numberArray[1].length()!=4 || numberArray[2].length()!=4) {
+			return false;
+		}else {
+			return true;
+		}
+	}
+	//목록출력
+	//항목 삭제
+	//항목 수정
+	//항목 검색
+}

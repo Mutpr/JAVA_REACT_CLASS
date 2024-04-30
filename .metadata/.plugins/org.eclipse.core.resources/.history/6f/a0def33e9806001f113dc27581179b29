@@ -1,0 +1,37 @@
+package week5_0430_Client;
+
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.Socket;
+import java.net.UnknownHostException;
+import java.util.Scanner;
+
+public class Client {
+
+	public static void main(String[] args) throws UnknownHostException, IOException {
+		Socket socket = new Socket("192.168.1.35", 30000);
+		Scanner sc = new Scanner(System.in);
+		
+		InputStream inputStream = socket.getInputStream();
+		DataInputStream dis = new DataInputStream(inputStream);
+		OutputStream outputStream = socket.getOutputStream();
+		DataOutputStream dos = new DataOutputStream(outputStream);
+		
+		String id = sc.nextLine();
+		String pw = sc.nextLine();
+		
+		dos.writeUTF(id);
+		dos.writeUTF(pw);
+		
+		if(dis.readBoolean() == true) {
+			System.out.println("로그인 성공");
+		}else {
+			System.out.println("로그인 실패");
+		}
+
+	}
+
+}
