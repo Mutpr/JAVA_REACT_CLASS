@@ -1,5 +1,8 @@
 package JDBC_02_Contact;
 
+import java.util.Date;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Scanner;
 
@@ -44,7 +47,9 @@ public class ContactMain {
 					for (ContactDTO contact : contactList) {
 						System.out.print("아이디: " + contact.getId() + "\t");
 						System.out.print("이름: " + contact.getName() + "\t");
-						System.out.print("연락처: " + contact.getPhone() + "\n");
+						System.out.print("연락처: " + contact.getPhone() + "\t");
+						System.out.println("날짜: "+contact.getRegDate());
+
 					}
 				}
 
@@ -86,7 +91,8 @@ public class ContactMain {
 					ContactDTO contact = manager.selectOneByName(selectedName);
 					System.out.print("아이디: " + contact.getId() + "\t");
 					System.out.print("이름: " + contact.getName() + "\t");
-					System.out.print("연락처: " + contact.getPhone() + "\n");
+					System.out.print("연락처: " + contact.getPhone() + "\t");
+					System.out.print("입력일자: " + contact.getRegDate() + "\n");
 				}
 				if (menuSelect == 0) {
 					System.out.print("시스템을 종료합니다.");

@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class ContactDAO {
@@ -20,14 +22,14 @@ public class ContactDAO {
 	// 신규등록
 	public void insertContact(String name, String phone) throws SQLException {
 		try (Connection con = this.getConnection(); Statement stmt = con.createStatement();) {
-			if (isWrongContact(phone) == true) {
+			if (isWrongContact(phone) == false) {
 				// 중복값 검사
 				String duplicationSQL = "select * from contact where name ='" + name + "'";
 				ResultSet duplication = stmt.executeQuery(duplicationSQL);
 				if (duplication.next()) {
 					System.out.println("중복값입니다.");
 				} else {
-					String sql = "insert into contact values (contact_seq.nextval,'" + name + "','" + phone + "')";
+					String sql = "insert into contact values (contact_seq.nextval,'" + name + "','" + phone + "',to_timestamp(sysdate,'YYYY-MM-DD HH24:MI:SS.FF3'))";
 					int rs = stmt.executeUpdate(sql);
 					if (rs > 0) {
 						System.out.println("입력 성공");
@@ -36,7 +38,7 @@ public class ContactDAO {
 						System.out.println("입력 실패");
 					}
 				}
-			} else if(isWrongContact(phone) == false){
+			} else if(isWrongContact(phone) == true){
 				System.out.println("옳지 않은 번호입니다.");
 			}
 		}
@@ -55,7 +57,9 @@ public class ContactDAO {
 				int id = selectAllResult.getInt("id");
 				String name = selectAllResult.getString("name");
 				String phone = selectAllResult.getString("phone");
-				ContactDTO contact = new ContactDTO(id, name, phone);
+				Timestamp time = selectAllResult.getTimestamp("reg_date");
+				String systemTime = systemTime(time);
+				ContactDTO contact = new ContactDTO(id, name, phone, systemTime);
 				contactList.add(contact);
 			}
 			selectAllResult.close();
@@ -101,17 +105,15 @@ public class ContactDAO {
 				contact.setId(selectOneResult.getInt("id"));
 				contact.setName(selectOneResult.getString("Name"));
 				contact.setPhone(selectOneResult.getString("phone"));
+				contact.setRegDate(systemTime(selectOneResult.getTimestamp("reg_date")));
 			}
 			return contact;
 		}
 	}
 	// 유효성 검사
 	public boolean isWrongContact(String phone) {
-		String[] numberArray = phone.split("-");
-		System.out.println(numberArray.length);
-		for(String array : numberArray) {
-			System.out.print(array+"/");
-		}
+		String[] numberArray = new String[3];
+		numberArray = phone.split("-");
 		if (!numberArray[0].equals("010") || numberArray[1].length() != 4 || numberArray[2].length() != 4) {
 			return true;
 		} else {
@@ -139,5 +141,10 @@ public class ContactDAO {
 				return false;
 			}return true;
 		}
+	}
+	
+	public String systemTime(Timestamp timeStamp) {
+		SimpleDateFormat sdf = new SimpleDateFormat("yy-MM-dd");
+		return sdf.format(timeStamp);
 	}
 }
