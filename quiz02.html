@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            border: 1px solid black;
+            display: flex;
+        }
+        .container{
+            width: 600px;
+            height: 500px;
+            
+        }
+        .header{
+            width: 15%;
+            height: 100%;
+            background-color:yellow;
+            text-align: center;
+            justify-content: center;
+        }
+        .body{
+            width: 45%;
+            height: 100%;
+            flex-direction: column;
+        }
+        #block1{
+            height: 45%;
+            width: 100%;
+            justify-content: center;
+        }
+
+        #block2{
+            height: 55%;
+            width: 100%;
+            background-color:skyblue;
+            display: block;
+
+        }
+        .footer{
+            width: 40%;
+            height: 100%;
+            flex-direction: column;
+        }
+
+        #footer1{
+            height: 60%;
+            width: 100%;
+            background-color:red;
+        }
+
+        #footer2{
+            height: 40%;
+            width: 100%;
+            background-color:orange;
+        }
+
+        h1{
+            writing-mode:vertical-lr;
+        }
+    </style>
+</head>
+<body>
+    <div class = "container">
+        <div class="header" id = "title"><h1 style="text-align: center;">hey-hyen</h1></div>
+        <div class = "body">
+            <div id = "block1"><img src="images.jpg"></div>
+            <div id = "block2"></div>
+        </div>
+        <div class = "footer">
+            <div id="footer1"></div>
+            <div id="footer2"></div>
+        </div>
+    </div>
+</body>
+</html>
