@@ -1,110 +1,315 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
 <style>
-    div{
-        border: 1px solid black;
+    div {
         display: flex;
         height: 700px;
         width: 700px;
     }
-    .container{
+
+    .container {
         flex-direction: column;
     }
-    .header{
+
+    .header {
         height: 20%;
         width: 100%;
     }
 
-    .header>div{
-        height:100%;
-    
-    }
-    #menu{
-        height: 5%;
-        background-color:powderblue;
+    .header>div {
+        height: 100%;
+
     }
 
-    #menu>div{
+    #menu {
+        height: 5%;
+        background-color: #090d2d;
+        
+    }
+
+    #menu>div {
         width: 30%;
         height: 100%;
-        color:black
+        color: black;
+        justify-content: center;
+        align-items: center;
     }
-    .header>div#logo{
+
+    .header>div#logo {
+        width: 50%;
+    }
+
+    .header>div#title {
+        width: 70%;
+    }
+
+    .header>div#reserved {
         width: 15%;
+        flex-direction: column;
     }
-    .header>div#title{
-        width: 75%;
+
+    .header>div#reserved>#button1{
+        width: 100%;
+        justify-content:flex-end;
+        align-items: center;
+        flex-direction: column;
     }
-    .header>div#reserved{
-        width: 10%;
+
+    .header>div#reserved>#button2{
+        width: 100%;
+        justify-content:first baseline;
+        align-items: center;
+        flex-direction: column;
     }
-    .body{
+
+    .header>div#reserved>#button1>input{
+        margin-bottom: 5px;
+        width: 80%;
+        background-color: #090d2d;
+        border-radius: 10px;
+        font-size: 10px;
+    }
+    .header>div#reserved>#button2>input{
+        margin-top: 5px;
+        width: 80%;
+        background-color: #090d2d;
+        border-radius: 10px;
+        font-size: 10px;
+    }
+
+
+    .body {
         height: 70%;
         flex-direction: row;
+        justify-content: center;
+
     }
-    .body>div{
+
+    .body>div {
         height: 100%;
-        flex-direction:row-reverse;
+        flex-direction: row-reverse;
     }
-    .footer{
+
+    .footer {
         height: 10%;
         width: 100%;
+        background-color: rgb(213, 250, 255);
+        border-radius: 10px;
+        justify-content: center;
+        align-items: flex-start;
     }
-
-    #content{
-        width: 65%;
+    #content {
+        width: 70%;
         height: 100%;
     }
 
-    #sub{
-        width: 35%;
+    #sub {
+        width: 30%;
         height: 100%;
         flex-direction: column;
     }
 
-    #login{
+    #login {
         height: 40%;
         width: 100%;
         flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
 
-    #email{
-        height:60%;
+    #email {
+        height: 60%;
         width: 100%;
+        justify-content: center;
     }
 
     #menu>div:hover {
-  background-color: pink;
-}
+        background-color: powderblue;
+        color:black;
+    }
+    
 
+    #login-box {
+        width: 95%;
+        height: 95%;
+    }
+
+    .body {
+        font-family: "Nanum Gothic Coding", monospace;
+        font-weight: 400;
+        font-style: normal;
+    }
+
+
+    #login-box-title {
+        height: 25%;
+        width: 100%;
+    }
+
+    #login-box-input-id {
+        height: 25%;
+        width: 100%;
+    }
+
+    #login-box-input-pw {
+        height: 25%;
+        width: 100%;
+    }
+
+    #login-box-input-btn {
+        height: 25%;
+        width: 100%;
+        justify-content: center;
+    }
+
+    input {
+        width: 100%;
+    }
+
+    #login-box-input-btn>div {
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #login-box-input-btn>div>input {
+        height: 50%;
+        margin: 2px;
+        border-radius: 10px;
+        justify-content: center;
+    }
+
+    #content {
+        height: 100%;
+        flex-direction: column;
+    }
+
+    #content>div {
+        width: 100%;
+    }
+
+    #content-image {
+        height: 60%;
+    }
+
+    #content-image-sub {
+        height: 40%;
+    }
+
+    #content-image-sub>div {
+        height: 40%;
+    }
+
+    img {
+        justify-content: center;
+        width: 80%;
+        height: 80%;
+    }
+
+    #logo{
+        justify-content: center;
+        align-items: center;
+    }
+
+    #title{
+        justify-content: center;
+        align-items: center;
+    }
+
+    .nanum-myeongjo-regular {
+        font-family: "Nanum Myeongjo", serif;
+        font-weight: 400;
+        font-style: normal;
+    }
+
+    #logo_image{
+        width: 80%;
+        height: 40%;
+    }
+
+    .body, input, h1, h2, h3, h4, h5{
+        font-family: 'Nanum Myeongjo' !important;
+    }
+
+    #content-image-sub>div{
+        height: 100%;
+    }
+
+    #menu>div>h4{
+        color: white;
+    }
+
+    input{
+        color:white
+    }
+    #content-image>img{
+        width:100%;
+        height: 100%;
+    }
+
+    #content-image-sub>div>img{
+        width:100%;
+        height: 100%;
+}
 </style>
+
 <body>
     <div class="container">
         <div class="header">
-            <div id = "logo"></div>
-            <div id = "title"></div>
-            <div id = "reserved"></div>
+            <div id="logo"><img src="663338cfe110836f4e1f71203df553204ea73971692d55d51a782351a64a0d6b.png"></div>
+            <div id="title">
+            </div>
+            <div id="reserved">
+                <div id = "button1"><input type="button" value="제보"></div>
+                <div id = "button2"><button c;l></div>
+            </div>
         </div>
-        <div id = "menu">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
+        <div id="menu">
+            <div><h4>연예</h4></div>
+            <div><h4>스포츠</h4></div>
+            <div><h4>정치</h4></div>
+            <div><h4>사회</h4></div>
         </div>
         <div class="body">
-            <div id="content"></div>
+            <div id="content">
+                <div id="content-image"><img src="maincontents.PNG"></div>
+                <div id="content-image-sub">
+                    <div><img src="subcontents1.PNG"></div>
+                    <div><img src="subcontents2.PNG"></div>
+                    <div><img src="subcontents3.PNG"></div>
+                </div>
+            </div>
             <div id="sub">
-                <div id="login"></div>
-                <div id="email"></div>
+                <div id="login">
+                    <div id="login-box" style="flex-direction: column;">
+                        <div id="login-box-title" style="align-items: center; justify-content: center;">
+                            <h4>login box</h4>
+                        </div>
+                        <div id="login-box-input-id"><input placeholder="input your id"></div>
+                        <div id="login-box-input-pw"><input placeholder="input your pw"></div>
+                        <div id="login-box-input-btn">
+                            <div> <input type="button" value="로그인" style="background-color: #090d2d; margin: 2px;"></input></div>
+                            <div><input type="button" value="회원가입" style="background-color: #090d2d; margin: 2px;"></input></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="email">
+                <h5>contact us: example@email.com</h5></div>
             </div>
         </div>
 
-        <div class="footer"></div>
+        <div class="footer">
+            <h5>@copyright:2024</h5>
+        </div>
     </div>
 </body>
+
 </html>
