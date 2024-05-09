@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div{
+        border: 3px solid black;
+    }
+</style>
+<body>
+    <div style="display: flex; flex-direction:column; width: 400px; height: 400px;">
+        <div id="color-div" style="display: flex; width: 100%; height: 80%; justify-content: center; align-items: center;">
+        <h4>나는 파리의 택시운전사</h4>
+        </div>
+        <div id="input-1-div" style="display: flex; width: 100%; height: 20%;">
+            <input id="red" type='button'value = "red"style="width: 100%; height: 100%; font-size: 50px;">
+            <input id="blue" type='button'value = "blue"style="width: 100%; height: 100%; font-size: 50px;">
+            <input id="orange" type='button'value = "orange"style="width: 100%; height: 100%; font-size: 50px;">
+        </div>
+    </div>
+    <script>
+        let redButton = document.getElementById("red");
+        let blueButton = document.getElementById("blue");
+        let orangeButton = document.getElementById("orange");
+        let colorDiv = document.getElementById("color-div");
+        redButton.addEventListener('click', function(){
+            colorDiv.setAttribute("style", "background-color:red")
+        })
+        blueButton.addEventListener('click', function(){
+            colorDiv.style.backgroundColor='blue';
+        })
+        orangeButton.addEventListener('click', function(){
+            colorDiv.style.backgroundColor='orange';
+        })
+
+    </script>
+</body>
+</html>

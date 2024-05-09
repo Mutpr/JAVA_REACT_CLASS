@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #main{
+        width: 100px;
+        height: 100px;
+        border: 2px solid black;
+    }
+</style>
+<body>
+    <input id="text" type="text">
+    <div id = "main"></div>
+    <script>
+        let main = document.getElementById("main");
+        let text = document.getElementById("text");
+
+        text.onkeyup = function(e){
+            if(e.key == "enter"){
+                console.log(text.value);
+                main.innerHTML+='<h2>';
+                main.innerHTML+=text.value;
+                main.innerHTML+='</h2>';
+            }
+        }
+    </script>
+</body>
+</html>

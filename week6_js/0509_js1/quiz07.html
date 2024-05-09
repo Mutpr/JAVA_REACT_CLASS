@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #main{
+            width: 100px;
+            height: 100px;
+            border: 2px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <h4 id="text"></h4>
+    </div>
+    <script>
+        let main = document.getElementById("main");
+        let text = document.getElementById("text");
+        main.addEventListener('mouseover', function(){
+            text.innerText='무거워 저리가!';
+        })
+        main.addEventListener('mouseout', function(){
+            text.innerText='너무 멀리가진 말고....';
+        })
+    </script>
+</body>
+</html>

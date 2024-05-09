@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #main-display{
+            width: 1200px;
+            height: 100px;
+            border: 2px solid black;
+            margin: 10px;
+        }
+        div{
+            display: flex;
+        }
+
+        #output-div{
+            width: 95%;
+            height: 20%;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <fieldset id="main-display">
+            <legend><h3>fruits</h3></legend>
+            <div id="output-div"></div>
+        </fieldset>
+        
+        </div>
+
+    </div>
+    <div id="input-div" style="border: none;">
+        <input id="front" type="text"placeholder="앞쪽에 추가할 값">
+        <input id="front-push" type="button" value="앞쪽에 추가"></button>
+        <input id="front-pop" type="button" value="앞에서 삭제"></button>
+    </div>
+    <div id="input-div" style="border: none;">
+        <input id="back"type="text" placeholder="뒷쪽에 추가할 값">
+        <input  id="back-push" type="button" value="뒷쪽에 추가"></button>
+        <input id="back-pop"type="button" value="뒤에서 삭제"></button>
+    </div>
+    <script>
+        let array = [];
+        let output = document.getElementById("output-div");
+        document.getElementById("front-push").addEventListener('click', function(e){
+            array.unshift(front.value);
+            output.innerText = array;
+            front.value='';
+        })
+        document.getElementById("front-pop").addEventListener('click', function(e){
+            array.shift();
+            output.innerText = array;
+            front.value='';
+        })
+        document.getElementById("back-push").addEventListener('click', function(e){
+            array.push(back.value);
+            output.innerText = array;
+            back.value='';
+        })
+        document.getElementById("back-pop").addEventListener('click', function(e){
+            array.pop();
+            output.innerText = array;
+            back.value='';
+        })
+
+    </script>
+</body>
+</html>

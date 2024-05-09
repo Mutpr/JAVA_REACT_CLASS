@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            border: 3px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="display: flex; flex-direction:column; width: 400px; height: 400px;">
+        <div id="input-1-div" style="display: flex; width: 100%; height: 25%;">
+            <input id="input-1" type='text'placeholder = "첫번째 수 입력"style="width: 100%; height: 100%; font-size: 50px;">
+        </div>
+        <div id="input-2-div" style="display: flex; width: 100%; height: 25%;">
+            <input id="input-2" type='text'placeholder = "두번째 수 입력"style="width: 100%; height: 100%; font-size: 50px;">
+        </div>
+        <div id="plus-div" style="width: 100%; height: 25%; display: flex; justify-content: center; align-items: center;">
+            <input id="plus" value ="+" type="button" style="width: 20%; height: 100%; font-size: 80px;">
+        </div>
+        <div id="result-div" style="width: 100%; height: 25%; align-items: center;">
+            <h1 id="result"></h1>
+        </div>
+    </div>
+    <script>
+        let input1 = document.getElementById("input-1");
+        let input2 = document.getElementById("input-2");
+        let button = document.getElementById("plus");
+        let result = document.getElementById('result');
+        button.addEventListener('click', function(){
+            result.innerText =  parseInt(input1.value)+ parseInt(input2.value)
+            console.log(input1.value, input2.value);
+        })
+    </script>
+</body>
+
+</html>

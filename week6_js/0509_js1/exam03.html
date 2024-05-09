@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function test(){
+            return function(num1, num2){
+                return num1/num2;
+            };
+        }
+        let result1 = test();
+        result1(10,2);
+        let result2 = test;
+        result2()(10,2)
+        let result = test()(10, 2);
+        console.log(result2);
+
+    </script>
+</body>
+</html>

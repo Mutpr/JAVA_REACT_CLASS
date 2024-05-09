@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="text">
+    <input type="submit" id="button" value="event!">
+    <div style="width: 100px; height: 100px; border: 1px solid black;">
+        <h1 id="title">11111</h1>
+    </div>
+    <script>
+        let type = document.getElementById("button");
+        let text = document.getElementById("text");
+        let title = document.getElementById("title");
+        type.addEventListener('click', function () {
+            console.log(title.innerHTML);
+            title.innerHTML = 'div 로 이동!'
+        })
+
+
+    </script>
+</body>
+
+</html>
