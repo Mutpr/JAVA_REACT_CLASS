@@ -1,7 +1,0 @@
-
-public class Example_Class {
-	private String example1() {
-		String a1 = "안녕헛새요";
-		return a1;
-	}
-}
