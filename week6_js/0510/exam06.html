@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+    let person = {
+        name: "홍헤린",
+        contact: "01012344567",
+        hello:function(){
+            alert("hello everyone i'm"+this.name);
+        }, 
+        hobby: ["java", "book"],
+        score:{
+            kor: 100,
+            math:100,
+            eng: 100
+        },
+        favoriteFruits: function(){
+            return ['melon', 'apple', 'mango'];
+        },
+        abilities: function(){
+            return {
+                java:function(){ return 100;},
+                html:function(){ return 90;},
+                js:function(){return 80;}
+            }
+        }, 
+        helloTo: function(friend){
+            alert("hello"+ friend.name);
+        }
+    };
+
+    console.log(person.score.eng)
+    console.log(person.favoriteFruits()[2]);
+    console.log(person.abilities().html());
+   </script>
+</body>
+</html>
