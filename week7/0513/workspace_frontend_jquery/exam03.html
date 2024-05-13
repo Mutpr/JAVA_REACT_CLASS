@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+    <button>test1</button>
+    <button>test2</button>
+    <button>test3</button>
+
+    <script>
+        // $("button").on("click", function(){
+        //     console.log(this.innerHTML);
+        //     console.log($(this).html())
+            //왜 innerHTML임? this 는 어떤 객체길래 html() 이 안먹는지
+            //여기서 innerHTML이 안먹는 이유-> this가 자바스크립트 객체임 
+            //this인스턴스를 제이쿼리로 이용하고싶으면
+            //$(this) 이런식으로 할당
+            //내가 쓰는 객체가 자바스크립트인지 제이쿼리인지 잘 알고 써야함
+            //this : 콜백이 할당되고있는 주체 찾아옴
+         //한꺼번에 이벤트 바인딩
+        // })
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <style> 
+    div{
+        border: 1px solid black
+    }
+    </style>
+    <script>
+        $(function (){
+            // $("#container").prepend("prepend<br>");
+            //  //앞쪽에내용 추가하고 싶ㅇ을때
+            //  $("#container").append("<br>Append");
+            //  //뒷쪽에 내ㅐ용 추가하고싶을때
+            //  $("#container").before("Before")
+            //  //요소를 벗어나서 아예 앞에
+            //  $("#container").after("after")
+            //  //요소를 벗어나서 뒤에
+            //  $("#container").prepend("prepend2")
+            //  $("#container").append("append2")
+            //  $("#container").before("before2")
+            //  $("#container").after("after2")
+
+            let prepend1 = "<div>prepend1</div>"
+            let prepend2 = $("<div>");
+                //변수 안에만 존재하는 div
+                prepend2.html("prepend1")//jquery 로 만들어서 jquery 문법 적용
+                prepend2.css("background-color", "pink");
+                //ui와 램속에 존재하는것은 별개로 봐야함
+                //동적 엘레먼트 처리
+            $("#container").prepend(prepend2);
+
+                let append1 = $("<div>");
+                append1.html("append1")
+                append1.css("background-color","dodgerblue")
+
+            $("#container").append(append1);
+        })
+    </script>
+</head>
+<body>
+    <div id="container">[기존내용]</div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+</head>
+<style>
+    div{
+        border: 1px solid black;
+        overflow: scroll
+    }
+</style>
+<body>
+    <div id="main" style="width: 300px; height: 300px;"></div>
+        <button id = "prepend"> 위로 추가하기 </button>
+        <button id = "append"> 아래로 추가하기 </button>
+        <button id = "clear"> 전체 삭제 </button>
+    <script>
+        let appendCnt = 0;
+        let prependCnt = 0;
+        $("#prepend").on("click", function(){
+            let prepend = $("<h5>");
+            prependCnt++;
+            prepend.html("앞에 추가추가추가추가" + prependCnt)
+            $("#main").prepend(prepend)
+        })
+        $("#append").on("click", function(){
+            let append = $("<h5>");
+            appendCnt++;
+            append.html("뒤에 추가추가추가추가" + appendCnt)
+            $("#main").append(append)
+        })
+
+        $("#clear").on("click", function(){
+            $("#main").empty();
+            appendCnt = 0;
+            prependCnt = 0;
+        })
+    </script>
+</body>
+</html>

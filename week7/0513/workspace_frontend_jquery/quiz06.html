@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <style>
+        div{
+            border : 1px solid black;
+        }
+        #main{
+            width: 300px;
+            height: 500px;
+            overflow: scroll;
+        }
+
+        #table{
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id = "main">
+        제목: <input id="title" type="input"><br>
+        내용: <input id="contents" type="input"><br>
+        작성자: <input id="author" type="input"><br>
+        <input id="input" type="button" value="테이블에 추가"><br>
+            <table id="table">
+            <thead>
+                <tr>
+                    <td>제목</td>
+                    <td>내용</td>
+                    <td>작성자</td>
+                    <td>X</td>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+            </table>
+    </div>
+    <script>
+        $("#input").on("click", function(){
+                let tr = $("<tr>")
+                $("#table>tbody").append(tr);
+
+                // $(".del").on("click", function (){
+                //     alert("hello!");
+                // })
+                //이벤트 할당 코드가 있어도 동적으로 생성된 이벤트 소스들은 이벤트 할당받지 못함
+
+                let title = $("<td>")
+                let titleInput = $("#title");
+                console.log(titleInput)
+                title.html(titleInput.val());
+                $(tr).append(title);
+                titleInput.val("");
+
+                let contents = $("<td>");
+                let contentsInput = $("#contents")
+                contents.html(contentsInput.val());
+                $(tr).append(contents);
+                contentsInput.val("");
+
+                let author = $("<td>");
+                let authorInput = $("#author")
+                author.html(authorInput.val());
+                $(tr).append(author);
+                authorInput.val("");
+
+                let deletionTD = $("<td>");
+                let delButton = $("<button>");
+                delButton.addClass("del");
+                delButton.html("X");
+                $(tr).append(delButton);
+
+
+        })
+    </script>
+</body>
+</html>
