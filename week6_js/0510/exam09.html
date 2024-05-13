@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>지도에 컨트롤 올리기</title>
+
+</head>
+
+<body>
+
+    <body>
+        <div id="map" style="width:500px;height:400px;"></div>
+        <script type="text/javascript"
+            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=64b0f726cc85ca915cd54747888953dc"></script>
+        <script>
+            let container = document.getElementById("map");
+            let options = {
+                center: new kakao.maps.LatLng(33.450701, 126.570667),
+                level: 3
+            }
+
+            let map = new kakao.maps.Map(container, options);
+
+            let markers = [];
+            markers.push(new kakao.maps.LatLng(33.450701, 126.570667));
+            kakao.maps.event.addListener(map, 'click', function (mouseEvent) {
+                let LatLng = mouseEvent.LatLng;
+                let marker = new kakao.maps.Marker({
+                    position: LatLng
+                });
+
+                marker.setMap(map);
+                markers.push(marker);
+
+                console.log(markers);
+                for(let i=0; i<markers.length; i++){
+                    markers[i].setMap(map);
+                }
+
+            })
+
+
+        </script>
+    </body>
+
+</html>

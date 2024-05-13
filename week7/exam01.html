@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript"
+    src="//dapi.kakao.com/v2/maps/sdk.js?appkey=64b0f726cc85ca915cd54747888953dc"></script>
+</head>
+
+<body>
+    <div id="map" style="width: 500px; height: 500px;"></div>
+    <div><h1>현재 마커의 갯수: </h1><h1 id="cnt-count"></h1></div>
+    <div><input id="clear-button" type="button" value="clear!"></div>
+    <script>
+        let markers = [];
+        let mapContainer = document.getElementById('map');
+        let mapOption = {
+            center: new kakao.maps.LatLng(33.450701, 126.570667),
+            level: 3
+        };
+
+        let map = new kakao.maps.Map(mapContainer, mapOption);
+        let cnt = 0;
+        let cnt_count = document.getElementById("cnt-count");
+        let clear = document.getElementById("clear-button");
+        cnt_count.innerHTML = cnt; 
+        kakao.maps.event.addListener(map, "click", function (e) {
+            let latlng = e.latLng;
+            let marker = new kakao.maps.Marker({
+                position: latlng,
+            });
+            cnt++;
+            cnt_count.innerHTML = cnt;
+            marker.setMap(map);
+            clear.addEventListener("click", function(e){
+            marker.setMap(null);
+            cnt = 0;
+            cnt_count.innerHTML = cnt;
+        })
+
+
+        kakao.maps.event.addListener(marker, "rightclick", function(e){
+            marker.setMap(null);
+            cnt--;
+            cnt_count.innerHTML = cnt;
+        })
+    });
+    </script>
+</body>
+
+</html>

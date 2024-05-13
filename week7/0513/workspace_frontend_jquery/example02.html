@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <input type="text" id = "input">
+    <div id="div"></div>
+    <button id="button">버튼</button>
+    <script>
+        let inputAsJs = document.getElementById("input");
+        let inputAsJQuery = $("#input");
+        inputAsJQuery.val("안뇽핫새요")
+        let value = inputAsJQuery.val();
+        console.log(value);
+
+        let value2 = $("#div").html();
+        console.log(value2);
+        let value3 = $("#div").html("제이쿼리로 값 넣기~");
+        console.log(value3);
+        $("#button").on("click", function(){
+            $("#div").css({
+                "background-color:":"pink",
+                "color":"white",
+            })
+        })
+    </script>
+</body>
+</html>
