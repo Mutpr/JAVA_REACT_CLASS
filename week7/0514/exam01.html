@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script>
+        $(function (){
+            //parent():기준 요소의 직계 부모 요소를 찾아 변환
+            console.log($("#me"));
+            console.log($("#me").parent());
+            console.log($("#me").parent().parent());
+            console.log($("#me").closest("#parent01"));
+            //나로부터 가장 가까운 parent01를 찾아와줘
+            console.log($("#me").closest("#home"));
+            //children(): 기준 요소의 직계 자손을 찾아 반환한다
+            console.log($("#me").children())//직계 자손 전체를 배열로
+            //find(): 기준 요소의 후손 전체에서 선택자 조건에 맞는 요소를 찾아 반환
+            console.log($("#me").find("#baby02"));
+            // closest(): 기준 요소의 parent로부터 모든 조상 전체에 걸쳐 선택자 조건에 맞는 요소를 찾아 반환
+            //prev () / next() : 기준 ㅇ요소의 바로 앞 또는 뒷 요소 찾기
+            //siblings() : 기준 요소와 동수준 요소중 선택자 조건에 맞는 요소를 찾아 반환
+            
+        })
+        
+    </script>
+</head>
+<body>
+    <div id="home">
+        Home
+        <div id="grand_parent">
+            GrandParent
+            <div id="parent01">
+                Parent01
+                <div id="brother01">
+                    Brother01
+                </div>
+                <div id="me">
+                    Me
+                    <div id="sister01">
+                        Sister01
+                        <div id="baby">
+                            Baby01
+                        </div>
+                    </div>
+                    <div id="sister02">
+                        Sister02
+                        <div id="baby02">
+                            Baby02
+                        </div>
+                    </div>
+                </div>
+                <div id="brother02">
+                    Brother02
+                </div>
+            </div>
+            <div id="parent02">
+                Parent02
+            </div>
+        </div>
+    </div>
+</body>
+</html>
