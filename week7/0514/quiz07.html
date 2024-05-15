@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <style>
+        #addListButtonDiv {
+            display: flex;
+            align-items: center;
+        }
+
+        #addListButton {
+            margin: 4px;
+            height: 70%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="addListButtonDiv">
+        <h5>파일첨부</h5><input id="addListButton" type="button" value="+">
+    </div>
+    <fieldset>
+        <legend>fileList</legend>
+        <div id="fileListDiv"></div>
+    </fieldset>
+    <script>
+        let inputCnt = 0;
+        $("#addListButton").on("click", function () {
+            if (inputCnt >= 5) {
+                alert("파일은 5개까지만 추가 가능합니다.");
+            } else {
+                let fileListDiv = $("#fileListDiv")
+
+                let inputDiv = $("<div>");
+                let input = $("<input>");
+                let deleteButton = $("<input>")
+                inputDiv.append(inputDiv);
+                input.attr({
+                    "id": "fileAdd",
+                    "type": "file"
+                })
+                deleteButton.attr({
+                    "id": "deletion",
+                    "type": "button",
+                    "value": "x"
+                })
+                fileListDiv.append(inputDiv)
+                inputDiv.append(input);
+                inputDiv.append(deleteButton)
+
+                inputCnt++;
+                console.log(inputCnt)
+
+                deleteButton.on("click", function () {
+                    inputCnt--;
+                    console.log(inputCnt);
+                })
+            }
+        })
+
+        // let deleteBtn = $('#deletion');
+        // $(deleteBtn).on('click', '.root', function (e) {
+        //     alert("root");
+        //     alert(e.target);
+        // });
+    </script>
+</body>
+
+</html>

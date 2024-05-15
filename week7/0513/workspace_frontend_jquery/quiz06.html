@@ -1,34 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <style>
-        div{
-            border : 1px solid black;
+        div {
+            border: 1px solid black;
         }
-        #main{
+
+        #main {
             width: 300px;
             height: 500px;
             overflow: scroll;
         }
 
-        #table{
+        #table {
             width: 100%;
         }
     </style>
 </head>
+
 <body>
-    <div id = "main">
+    <div id="main">
         제목: <input id="title" type="input"><br>
         내용: <input id="contents" type="input"><br>
         작성자: <input id="author" type="input"><br>
         <input id="input" type="button" value="테이블에 추가"><br>
         <input id="delInput" type="input" placeholder="삭제할 대상 제목을 입력">
         <input id="delButton" type="button" value="삭제">
-            <table id="table">
+        <table id="table">
             <thead>
                 <tr>
                     <td>제목</td>
@@ -39,75 +43,76 @@
             </thead>
             <tbody>
             </tbody>
-            </table>
+        </table>
     </div>
     <script>
-        $("table").on("click",".del", function(){
+        $("table").on("click", ".del", function () {
             //element 검색기능
-                //정적 페런트의 선택자 부여
-                //이벤트 소스에 대한 선택자
-                //추가 된 항목에 대해서 다시 이벤트를 바인딩
-                //새로 만들어지는 요소에 대해서 이벤트를 할당하는 것이 아니라 
-                //정적인 요소인 부모를 기준으로 이벤트를 할당
-                //성능상 최적화를 위해서 정적 페런트를 정확하게 잡는것이 좋다
+            //정적 페런트의 선택자 부여
+            //이벤트 소스에 대한 선택자
+            //추가 된 항목에 대해서 다시 이벤트를 바인딩
+            //새로 만들어지는 요소에 대해서 이벤트를 할당하는 것이 아니라 
+            //정적인 요소인 부모를 기준으로 이벤트를 할당
+            //성능상 최적화를 위해서 정적 페런트를 정확하게 잡는것이 좋다
             //이벤트의 동적 바인딩(dynamic event binding)
             //addClass(내용 추가) / attr (바꿔치기)
         })
 
-        
-        $("#input").on("click", function(){
-                let tr = $("<tr>")
-                $("#table>tbody").append(tr);
 
-                // $(".del").on("click", function (){
-                //     alert("hello!");
-                // })
-                //이벤트 할당 코드가 있어도 동적으로 생성된 이벤트 소스들은 이벤트 할당받지 못함
-                //화면이 로딩 다 되고 난 뒤에 만들어짐
-
-                let title = $("<td>")
-                title.attr("id", "title");
-                let titleInput = $("#title");
-                console.log(titleInput)
-                title.html(titleInput.val());
-                $(tr).append(title);
-                titleInput.val("");
-
-                let contents = $("<td>");
-                    contents.attr("id", "contents");
-                let contentsInput = $("#contents")
-                contents.html(contentsInput.val());
-                $(tr).append(contents);
-                contentsInput.val("");
-
-                let author = $("<td>");
-                    author.attr("id", "author");
-                let authorInput = $("#author")
-                author.html(authorInput.val());
-                $(tr).append(author);
-                authorInput.val("");
-
-                let deletionTD = $("<td>");
-                let delButton = $("<button>");
-                delButton.addClass("del");
-                delButton.html("X");
-                $(tr).append(delButton);
-
-                delButton.on("click", function(){
-                    delButton.closest("tr").remove();
-                })
+        $("#input").on("click", function () {
+            let tr = $("<tr>")
+            $("#table>tbody").append(tr);
             
+            // $(".del").on("click", function (){
+            //     alert("hello!");
+            // })
+            //이벤트 할당 코드가 있어도 동적으로 생성된 이벤트 소스들은 이벤트 할당받지 못함
+            //화면이 로딩 다 되고 난 뒤에 만들어짐
+
+            let title = $("<td>")
+            title.attr("id", "title");
+            let titleInput = $("#title");
+            console.log(titleInput)
+            title.html(titleInput.val());
+            $(tr).append(title);
+            titleInput.val("");
+
+            let contents = $("<td>");
+            contents.attr("id", "contents");
+            let contentsInput = $("#contents")
+            contents.html(contentsInput.val());
+            $(tr).append(contents);
+            contentsInput.val("");
+
+            let author = $("<td>");
+            author.attr("id", "author");
+            let authorInput = $("#author")
+            author.html(authorInput.val());
+            $(tr).append(author);
+            authorInput.val("");
+
+            let deletionTD = $("<td>");
+            let delButton = $("<button>");
+            delButton.addClass("del");
+            delButton.html("X");
+            $(tr).append(delButton);
+
+            delButton.on("click", function () {
+                delButton.closest("tr").remove();
+            })
+
         })
 
 
-        //자바스크립트는 형태가 자유롭기때문에 잘못된 코드라도 오류가 안 날수 있으므로 괄호 잘 보기!
-        $("#delButton").on("click", function(){
-                console.log("엥");
-                let inputValue = $("#delInput").val();
-                console.log(inputValue)
-                console.log($('tr:contains('+inputValue+')').remove())
-                
-            })
+        //자바스크립트는 형태가 자유롭기때문에 괄호 잘 보기!
+        $("#delButton").on("click", function () {
+            console.log("엥");
+            let inputValue = $("#delInput").val();
+            console.log(inputValue)
+            console.log($('tr:contains(' + inputValue + ')').remove())
+
+        })
     </script>
 </body>
+
 </html>

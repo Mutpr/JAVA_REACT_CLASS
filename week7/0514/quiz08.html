@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <style>
+        #box {
+            width: 1000px;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #replyBox {}
+
+        div {
+            border: 2px solid black;
+        }
+
+        #authorInputDiv {
+            width: 100%;
+            height: 20%;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+        }
+
+        #authorInput {
+            width: 100%;
+            height: 100%;
+        }
+
+        #replyInputDiv {
+            display: flex;
+            width: 100%;
+            height: 100%;
+        }
+
+        #authorDiv {}
+
+        #replyDiv {}
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <div id="box">
+            <div id="authorInputDiv">
+                <div id="authorInput" contenteditable=true></div>
+            </div>
+            <div id="replyInputDiv">
+                <div id="replyInput" contenteditable="true" style="width: 100%; height: 100;"></div>
+                <div style="width: 10%;height: 100%;"><input id="replyButton" type="button" value="reply"
+                        style="width: 100%; height: 100%;"></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $("#replyButton").on("click", function (e) {
+            console.log()
+            if ($("#authorInput").html() === "" || $("#replyInput").html() === "") {
+                alert("입력해ㅐ라잉");
+
+            } else {
+                //가장 큰 박스
+                let replyBoxDiv = $("<div>");
+                let replyBoxSubDiv1 = $("<div>");
+                let authorDiv = $("<div>");
+                let replyDiv = $("<div>");
+                let buttonDiv = $("<div>");
+                let updateButton = $("<input>");
+                let deleteButton = $("<input>");
+
+
+                replyBoxDiv.css({
+                    "width": "1000px",
+                    "height": "300px",
+                    "display": "flex",
+                    "flex-direction": "row"
+                })
+                replyBoxDiv.attr({
+                    "id": "replyBox",
+                })
+                authorDiv.attr({
+                    "id": "authorDiv",
+                })
+                authorDiv.css({
+                    "display": "flex",
+                    "width": "100%",
+                    "height": "20%"
+                })
+
+                replyDiv.css({
+                    "display": "flex",
+                    "flex-direction": "row",
+                    "width": "100%",
+                    "height": "80%",
+                })
+                replyDiv.attr({
+                    "id": "replyDiv",
+                })
+
+                replyBoxSubDiv1.css({
+
+                    "display": "flex",
+                    "flex-direction": "column",
+                    "width": "100%",
+                    "height": "100%",
+                })
+                replyBoxSubDiv1.attr({
+                    "id": "replyBoxSub"
+                })
+
+                buttonDiv.attr("id", "buttonDiv");
+                buttonDiv.css({
+                    "width": "10%",
+                    "height": "100%",
+                    "display": "flex",
+                    "align-items": "center",
+                    "justify-content": "center"
+
+                })
+
+                updateButton.css({
+                    "width": "50%",
+                    "height": "10%",
+                    "margin": "2px"
+                })
+                updateButton.attr({
+                    "id": "updateButton",
+                    "type": "button",
+                    "value": "수정",
+                })
+
+                deleteButton.css({
+                    "width": "50%",
+                    "height": "10%",
+                    "margin": "2px"
+                })
+                deleteButton.attr({
+                    "id": "deleteButton",
+                    "type": "button",
+                    "value": "삭제",
+                })
+
+                $("#main").append(replyBoxDiv);
+                replyBoxDiv.append(replyBoxSubDiv1);
+                replyBoxDiv.append(buttonDiv);
+
+                authorDiv.append($("#authorInput").html());
+                replyBoxSubDiv1.append(authorDiv);
+
+                replyDiv.append($("#replyInput").html());
+                replyBoxSubDiv1.append(replyDiv);
+
+                buttonDiv.append(updateButton);
+                buttonDiv.append(deleteButton);
+
+                deleteButton.on("click", function () {
+                    replyBoxDiv.remove();
+                })
+
+            }
+
+        })
+
+        $(document).on("click", "#updateButton", function () {
+            console.log("업데이트 버튼 클릭");
+            let replyBox = $(this).closest("#replyBox");
+
+            let originAuthor = replyBox.find("#authorDiv").html();
+            console.log(originAuthor)
+
+            let originContent = replyBox.find("#replyDiv").html();
+            console.log(originContent)
+
+            replyBox.find("#updateButton").remove();
+            replyBox.find("#deleteButton").remove();
+
+            let confirmButton = $('<input>');
+            confirmButton.attr({
+                "id": "confirmButton",
+                "type": "button",
+                "value": "확인",
+            });
+            confirmButton.css({
+                "width": "50%",
+                "height": "10%",
+                "margin": "2px"
+            });
+
+            let cancelButton = $('<input>');
+            cancelButton.attr({
+                "id": "cancelButton",
+                "type": "button",
+                "value": "취소",
+            });
+            cancelButton.css({
+                "width": "50%",
+                "height": "10%",
+                "margin": "2px"
+            });
+
+            replyBox.find("#buttonDiv").append(confirmButton).append(cancelButton);
+            replyBox.find("#authorDiv").attr("contenteditable", true);
+            replyBox.find("#replyDiv").attr("contenteditable", true);
+
+
+        });
+        $(document).on("click", "#cancelButton", function () {
+            let replyBox = $(this).closest(".replyBox");
+            let originalAuthor = replyBox.data('originalAuthor');
+            let originalContent = replyBox.data('originalContent');
+
+            replyBox.data('originalAuthor', originalAuthor);
+            replyBox.data('originalContent', originalContent);
+
+            replyBox.find("#authorDiv").html(originalAuthor);
+            replyBox.find("#replyDiv").html(originalContent);
+
+            replyBox.find("#cancelButton").remove();
+            replyBox.find("#confirmButton").remove();
+
+            let updateButton = $('<input>');
+            updateButton.attr({
+                "id": "updateButton",
+                "type": "button",
+                "value": "수정",
+            });
+            updateButton.css({
+                "width": "50%",
+                "height": "10%",
+                "margin": "2px"
+            });
+
+            let deleteButton = $('<input>');
+            deleteButton.attr({
+                "id": "deleteButton",
+                "type": "button",
+                "value": "삭제",
+            });
+            deleteButton.css({
+                "width": "50%",
+                "height": "10%",
+                "margin": "2px"
+            });
+
+            replyBox.find("#buttonDiv").append(updateButton).append(deleteButton);
+            $("#authorDiv").attr("contenteditable", false);
+            $("#replyDiv").attr("contenteditable", false);
+        });
+
+        $(document).on("click", "#confirmButton", function () {
+            $("#authorDiv").attr("contenteditable", false);
+            $("#replyDiv").attr("contenteditable", false);
+
+            console.log("확인 버튼 클릭");
+        });
+
+
+
+
+    </script>
+</body>
+
+</html>
