@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script> <!--jQery 사용 cdn-->
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        div {
+            border: 1px solid black;
+        }
+
+        .container {
+            width: 300px;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .output {
+            flex: 0.7;
+            /* height: 70%; */
+            overflow-y: auto;
+            width: 100%;
+            background-color: dodgerblue;
+            display: flex;
+        }
+
+        .msgbox {
+            display: inline-block;
+            margin: 3px;
+            border-radius: 10%;
+            background-color: yellow;
+            /* word-wrap: break-word; */
+            /* 너비를 벗어나는 경우 자동으로 줄바꿈*/
+        }   
+
+        .timebox {
+            /* width: 10%; */
+            border: none;
+        }
+
+        .input {
+            flex: 0.3;
+            /* height: 30%; */
+            display: flex;
+            overflow: auto;
+        }
+
+        .writebox {
+            flex: 0.7;
+            overflow: auto;
+        }
+
+        .inputbtn {
+            flex: 0.3;
+        }
+
+        .btnsend {
+            height: 100%;
+            width: 100%;
+            background-color: yellow;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="output">
+            <!-- <div class="msgbox"></div> -->
+        </div>
+        <div class="input">
+            <div class="writebox" contenteditable="true"></div>
+            <div class="inputbtn"><button class="econ">Econ</button></div>
+        </div>
+    </div>
+    <script>
+
+        $(".writebox").on("keydown", function (e) {
+
+            if (e.key == "Enter") {
+                console.log("Test");
+                let messageBoxDiv = $("<div>")
+
+                let text = $(".writebox").html();
+                if (text == "") { alert("알림"); return false; }
+
+                var dt = new Date();
+                var time = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
+                
+                // let boxbox = $("<div>").addClass("boxbox");
+                let msgbox = $("<div>").addClass("msgbox").html(text);
+                let timebox = $("<div>").addClass("timebox").html(time).css({"display":"inline-block"});
+                
+                // $(".boxbox").append(msgbox); 
+                $(".output").append(msgbox);
+                $(".output").append(timebox);
+                $(".writebox").html("");
+
+                $(".output").scrollTop($(".output")[0].scrollHeight);
+
+
+                e.preventDefault(); // 기존 내장되어있는 동작 하지마' 라는 뜻
+                // return false; // 기존 내장되어있는 동작 하지마' 라는 뜻
+            }
+        })
+        // 채팅 인터페이스 만들기 
+        $(".btnsend").on("click", function () {
+
+        })
+
+
+
+    </script>
+</body>
+
+</html>

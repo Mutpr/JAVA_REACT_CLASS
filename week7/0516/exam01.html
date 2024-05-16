@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <style>
+        div {
+            border: 2px solid black;
+            display: flex;
+        }
+
+        #main {
+            width: 300px;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #outputDiv {
+            margin: 5px;
+            width: 90%;
+            height: 80%;
+            margin: 10px;
+            overflow: auto;
+            padding: 0%;
+            background-color: dodgerblue;
+            border-radius: 20px;
+            overflow-y: auto;
+            display: flex;
+        }
+
+        #inputDiv {
+            margin: 5px;
+            margin-top: 10px;
+            width: 90%;
+            height: 20%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #input {
+            width: 80%;
+            height: 100%;
+            display: flex;
+            border: 1px solid black;
+            overflow: auto;
+        }
+
+        #inputButtonDiv {
+            width: 20%;
+            height: 100%;
+            border: 1px solid black;
+        }
+
+        #inputButton {
+            width: 100%;
+            height: 100%;
+        }
+
+        img {
+            width: 80%;
+            height: 70%;
+        }
+
+        #emojiDiv {
+            width: 90%;
+            height: 90%;
+            margin: 10px;
+        }
+
+        #popupCloseButtonDiv {
+            width: 100%;
+        }
+
+        #popup {
+            justify-content: center;
+            align-items: center;
+        }
+
+        #emoji1 {
+            width: 25%;
+            height: 25%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main" style="display: flex;">
+        <div id="outputDiv" style="position: relative; flex-direction: column; align-items: center;">
+            <div id="popupDiv" style="border:none; width: 95%; height: 95%; justify-content: flex-end; 
+                align-items: center; display: flex; flex-direction: column; position:absolute">
+                <div id="popup" style="border:none; width: 100%; height: 50%; flex-direction: column; 
+                    background-color: rgba(255,255,255,0.4); display: none;">
+                    <div id="popupCloseButtonDiv" style="border: none; flex-direction: row-reverse;">
+                        <input type="button" id="popupCloseButton" value="X"
+                            style="background-color: transparent; border: none;">
+                    </div>
+                    <div id="emojiDiv">
+                        <div id="emojiDivSub" style="width: 50%; height: 100%; flex-direction: column;">
+                            <div id="emoji1" style="width: 100%; height: 100%;"></div>
+                            <div id="emoji1" style="width: 100%; height: 100%;"></div>
+                        </div>
+                        <div id="emojiDivSub" style="width: 50%; height: 100%; flex-direction: column;">
+                            <div id="emoji1" style="width: 100%; height: 100%;"></div>
+                            <div id="emoji1" style="width: 100%; height: 100%;"></div>
+                        </div>
+                    </div>
+                    
+                </div>
+
+            </div>
+        </div>
+        <div id="inputDiv">
+            <div style="align-items: center; justify-content: center;">
+                <div id="input" contenteditable="true" style="width: 90%; height: 90%; border: none;">
+                </div>
+                <div style="width: 90%; height: 90%; justify-content: flex-end; border: none;">
+                    <div style="justify-content: flex-end; align-items: flex-end; margin: 5px; border: none;">
+                        <img id="emoji"
+                            src="‘pngtree-smile-vector-template-design-illustration-png-image_555090’의 배경이 제거됨.png">
+                    </div>
+                </div>
+            </div>
+            <div id="inputButtonDiv">
+                <input type="button" id="inputButton" value="send">
+            </div>
+        </div>
+    </div>
+    <script>
+        $("#emoji").on("click", function () {
+            $("#popup").css({
+                "display": "flex"
+            })
+        })
+
+        $("#popupCloseButtonDiv").on("click", function () {
+            console.log('눌림???');
+            $("#popup").css({
+                "display": "none"
+            });
+        })
+        $("#input").scrollTop($("#input")[0].scrollHeight);
+        function appendChat() {
+            let outputDiv = $("#outputDiv");
+            let outputChatDiv = $("<div>");
+            outputChatDiv.attr("id", "outputchatDiv");
+            outputChatDiv.css({
+                "border": "none",
+                "align-items": "center",
+                "width": "100%"
+            })
+
+            let innerChatDiv = $("<div>")
+            innerChatDiv.css({
+                "width": " 40%",
+                "margin": "10px",
+                "text-overflow": "unset",
+                "border-radius": " 5px",
+                "overflow-wrap": "break-word",
+                "padding": "4px",
+                "display": "inline-block",
+                "background-color": "#feffc9",
+                "border": "none"
+            })
+
+            let timeDiv = $("<div>");
+            timeDiv.css({
+                "display": "inline-block",
+                "border": "none"
+            })
+            let time = new Date();
+            var hours = ('0' + time.getHours()).slice(-2);
+            var minutes = ('0' + time.getMinutes()).slice(-2);
+
+            var timeString = hours + ':' + minutes;
+            timeDiv.html(timeString);
+            outputChatDiv.append(innerChatDiv).append(timeDiv);
+            let chat = $("#input");
+            console.log(chat.html());
+            outputChatDiv.attr({
+                "width": "100%"
+            })
+            innerChatDiv.html(chat.html());
+            outputDiv.append(outputChatDiv);
+            chat.html('');
+        }
+
+        $(document).on("click", "#inputButton", function () {
+            appendChat();
+        });
+
+        $(document).on("keypress", "#input", function (event) {
+            if (event.which === 13) { // Enter key code is 13
+                event.preventDefault(); // Prevent the default action (new line in contenteditable div)
+                appendChat();
+            }
+        });
+    </script>
+</body>
+
+</html>
