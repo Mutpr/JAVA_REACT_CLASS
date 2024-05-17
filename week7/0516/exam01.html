@@ -9,7 +9,7 @@
         integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <style>
         div {
-            border: 2px solid black;
+
             display: flex;
         }
 
@@ -20,6 +20,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            background-color: #ffcad5;
         }
 
         #outputDiv {
@@ -29,10 +30,11 @@
             margin: 10px;
             overflow: auto;
             padding: 0%;
-            background-color: dodgerblue;
+            background-color: #f9afbd;
             border-radius: 20px;
             overflow-y: auto;
             display: flex;
+            border: 0.5px dotted #b9062f;
         }
 
         #inputDiv {
@@ -57,7 +59,6 @@
         #inputButtonDiv {
             width: 20%;
             height: 100%;
-            border: 1px solid black;
         }
 
         #inputButton {
@@ -86,18 +87,28 @@
         }
 
         #emoji1 {
+            background-color: rgba(255, 255, 255, 0.3);
             width: 25%;
             height: 25%;
+            margin: 8px;
+        }
+
+        #emoji1 img {
+            width: 50%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            object-fit: contain;
         }
     </style>
 </head>
 
 <body>
-    <div id="main" style="display: flex;">
-        <div id="outputDiv" style="position: relative; flex-direction: column; align-items: center;">
-            <div id="popupDiv" style="border:none; width: 95%; height: 95%; justify-content: flex-end; 
-                align-items: center; display: flex; flex-direction: column; position:absolute">
-                <div id="popup" style="border:none; width: 100%; height: 50%; flex-direction: column; 
+    <div id="main" style="display: flex; overflow: auto;">
+        <div id="outputDiv" style="position: relative; flex-direction: column; align-items: center; overflow: auto;">
+            <div id="popupDiv" style="border:none; justify-content: flex-end; 
+                align-items: center; display: flex; flex-direction: column; position:fixed; top: 150px">
+                <div id="popup" style="border:none; width: 90%; height: 60%; flex-direction: column; 
                     background-color: rgba(255,255,255,0.4); display: none;">
                     <div id="popupCloseButtonDiv" style="border: none; flex-direction: row-reverse;">
                         <input type="button" id="popupCloseButton" value="X"
@@ -105,15 +116,23 @@
                     </div>
                     <div id="emojiDiv">
                         <div id="emojiDivSub" style="width: 50%; height: 100%; flex-direction: column;">
-                            <div id="emoji1" style="width: 100%; height: 100%;"></div>
-                            <div id="emoji1" style="width: 100%; height: 100%;"></div>
+                            <div id="emoji1" style="width: 100%; height: 100%;">
+                                <img src='KakaoTalk_Photo_2024-04-02-10-11-56 001jpeg.jpeg'>
+                            </div>
+                            <div id="emoji1" style="width: 100%; height: 100%;">
+                                <img src='KakaoTalk_Photo_2024-04-02-10-11-56 002jpeg.jpeg'>
+                            </div>
                         </div>
                         <div id="emojiDivSub" style="width: 50%; height: 100%; flex-direction: column;">
-                            <div id="emoji1" style="width: 100%; height: 100%;"></div>
-                            <div id="emoji1" style="width: 100%; height: 100%;"></div>
+                            <div id="emoji1" style="width: 100%; height: 100%;">
+                                <img src='KakaoTalk_Photo_2024-04-02-10-11-56 001jpeg.jpeg'>
+                            </div>
+                            <div id="emoji1" style="width: 100%; height: 100%;">
+                                <img src='KakaoTalk_Photo_2024-04-02-10-11-56 002jpeg.jpeg'>
+                            </div>
                         </div>
                     </div>
-                    
+
                 </div>
 
             </div>
@@ -130,7 +149,7 @@
                 </div>
             </div>
             <div id="inputButtonDiv">
-                <input type="button" id="inputButton" value="send">
+                <input type="button" id="inputButton" value="send" style="border-radius: 10px; border: none;">
             </div>
         </div>
     </div>
@@ -148,10 +167,13 @@
             });
         })
         $("#input").scrollTop($("#input")[0].scrollHeight);
+
         function appendChat() {
-            let outputDiv = $("#outputDiv");
+
             let outputChatDiv = $("<div>");
             outputChatDiv.attr("id", "outputchatDiv");
+
+            let outputDiv = $("#outputDiv");
             outputChatDiv.css({
                 "border": "none",
                 "align-items": "center",
@@ -159,6 +181,7 @@
             })
 
             let innerChatDiv = $("<div>")
+            innerChatDiv.attr("id", "chat")
             innerChatDiv.css({
                 "width": " 40%",
                 "margin": "10px",
@@ -203,6 +226,59 @@
                 appendChat();
             }
         });
+
+        $(document).on("click", "[id^=emoji1]", function () {
+            console.log("클릭댓어유")
+            let src = $(this).find("img").attr("src");
+            console.log(src);
+            console.log(`<img src="${src}">`)
+
+                let outputChatDiv = $("<div>");
+                outputChatDiv.attr("id", "outputchatDiv");
+
+                let outputDiv = $("#outputDiv");
+                outputChatDiv.css({
+                    "border": "none",
+                    "align-items": "flex-end",
+                    "width": "100%"
+                })
+
+                let innerChatDiv = $("<div>")
+                innerChatDiv.attr("id", "chat")
+                innerChatDiv.css({
+                    "width": " 40%",
+                    "margin": "10px",
+                    "text-overflow": "unset",
+                    "border-radius": " 5px",
+                    "overflow-wrap": "break-word",
+                    "padding": "4px",
+                    "display": "inline-block",
+                    "background-color": "#feffc9",
+                    "border": "none"
+                })
+
+                let timeDiv = $("<div>");
+                timeDiv.css({
+                    "display": "inline-block",
+                    "border": "none"
+                })
+                let time = new Date();
+                var hours = ('0' + time.getHours()).slice(-2);
+                var minutes = ('0' + time.getMinutes()).slice(-2);
+
+                var timeString = hours + ':' + minutes;
+                timeDiv.html(timeString);
+                outputChatDiv.append(innerChatDiv).append(timeDiv);
+                let chat = $("#input");
+                console.log(chat.html());
+                outputChatDiv.attr({
+                    "width": "100%"
+                })
+                innerChatDiv.html(`<img src="${src}">`);
+                outputDiv.append(outputChatDiv);
+                chat.html('');
+            }
+)
     </script>
 </body>
 
