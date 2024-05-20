@@ -84,7 +84,8 @@
     </style>
 </head>
 <body>
-    <div class="container">
+    <script>
+    let str = `<div class="container">
         <div class="header">
             <div class="logo">
                 <img src="logo.png">
@@ -122,4 +123,14 @@
             </div>
         </div>
         <div class="footer">Footer</div>
-    </div>
+    </div>`;
+    let regex = /class=(.+?)""/g;
+
+    let result;
+    while((result = regex.exec(str))!= null){
+        console.log(result[0]);
+        console.log(RegExp.lastMatch);
+        coonsole.log("$1:"+result[1]);
+        console.log(RegExp.$1);
+    }
+</script>
